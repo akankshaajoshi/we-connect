@@ -6,11 +6,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
-const userRoute = require("./routes/users");
-const authRoute = require("./routes/auth");
-const postRoute = require("./routes/posts");
-const conversationRoute = require("./routes/conversations");
-const messageRoute = require("./routes/messages");
+const userRoute = require("../routes/users");
+const authRoute = require("../routes/auth");
+const postRoute = require("../routes/posts");
+const conversationRoute = require("../routes/conversations");
+const messageRoute = require("../routes/messages");
 
 const app = express();
 
@@ -49,12 +49,12 @@ app.use(
 app.get("/", (req, res) => {
   res.status(200).json("Server working");
 });
-app.use("/api/posts", postRoute);
-app.use("/api/users", userRoute);
-app.use("/api/auth", authRoute);
-app.use("/api/conversations", conversationRoute);
-app.use("/api/messages", messageRoute);
-app.post("/api/upload", upload.single("file"), (req, res) => {
+app.use("/posts", postRoute);
+app.use("/users", userRoute);
+app.use("/auth", authRoute);
+app.use("/conversations", conversationRoute);
+app.use("/messages", messageRoute);
+app.post("/upload", upload.single("file"), (req, res) => {
   try {
     return res.status(200).json("File uploaded successfully.");
   } catch (err) {
