@@ -16,12 +16,9 @@ const Post = ({ post }) => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
 
-  console.log(PF);
-
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(`https://we-connect-api-r7xb.onrender.com/api/users?userId=${post.userId}`);
-      console.log(response);
       setUser(response.data);
     };
     fetchUser();
@@ -47,7 +44,6 @@ const Post = ({ post }) => {
               className="postProfileImg"
               src={user.profilePicture ? PF + user.profilePicture : PF + "/person.jpg"}
               alt=""
-              srcset=""
             />
             <span className="postUsername">{user.username}</span>
             <span className="postDate">{format(post.createdAt)}</span>
@@ -62,7 +58,7 @@ const Post = ({ post }) => {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className="likeIcon" src={PF + "/like.png"} onCLick={likeHandler} alt="" />
+            <img className="likeIcon" src={PF + "/like.png"} onClick={likeHandler} alt="" />
             <img className="likeIcon" src={PF + "/heart.png"} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like this</span>
           </div>

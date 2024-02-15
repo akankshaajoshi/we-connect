@@ -66,7 +66,7 @@ export const Share = () => {
             <Cancel className="shareCancelImg" onClick={() => setFile(null)} />
           </div>
         )}
-        <form className="shareBottom" onSubmit={submitHandler} enctype="multipart/form-data">
+        <form className="shareBottom" onSubmit={submitHandler} encType="multipart/form-data">
           <div className="shareOptions">
             <label htmlFor="file" className="shareOption">
               <PermMedia htmlColor="tomato" className="shareIcon" />
