@@ -21,7 +21,7 @@ const Register = () => {
         password: password.current.value,
       };
       try {
-        await axios.post("http://localhost:8080/api/auth/register", userCredentials);
+        await axios.post("https://we-connect-api-r7xb.onrender.com/api/auth/register", userCredentials);
         navigate("/login");
       } catch (err) {
         console.log(err);

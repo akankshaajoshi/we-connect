@@ -60,7 +60,7 @@ const Messenger = () => {
     });
 
     try {
-      const res = await axios.post("http://localhost:8080/api/messages/", message);
+      const res = await axios.post("https://we-connect-api-r7xb.onrender.com/api/messages/", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {
@@ -71,7 +71,7 @@ const Messenger = () => {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/conversations/" + user._id);
+        const res = await axios.get("https://we-connect-api-r7xb.onrender.com/api/conversations/" + user._id);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
@@ -83,7 +83,7 @@ const Messenger = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/messages/" + currentChat?._id);
+        const res = await axios.get("https://we-connect-api-r7xb.onrender.com/api/messages/" + currentChat?._id);
         setMessages(res.data);
       } catch (err) {
         console.log(err);

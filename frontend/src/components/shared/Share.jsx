@@ -26,13 +26,13 @@ export const Share = () => {
       data.set("file", file, fileName);
       newPost.img = fileName;
       try {
-        await axios.post("http://localhost:8080/api/upload/", data);
+        await axios.post("https://we-connect-api-r7xb.onrender.com/api/upload/", data);
       } catch (err) {
         console.log(err);
       }
     }
     try {
-      await axios.post("http://localhost:8080/api/posts", newPost);
+      await axios.post("https://we-connect-api-r7xb.onrender.com/api/posts", newPost);
     } catch (err) {
       console.log(err);
     }

@@ -14,7 +14,7 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get(`http://localhost:8080/api/users?username=${username}`);
+      const response = await axios.get(`https://we-connect-api-r7xb.onrender.com/api/users?username=${username}`);
       setUser(response.data);
     };
     fetchUser();

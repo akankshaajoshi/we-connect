@@ -9,7 +9,9 @@ const ChatOnline = ({ onlineUsers, currentId, setCurrentChat }) => {
 
   const handleClick = async (user) => {
     try {
-      const res = await axios.get(`http://localhost:8080/api/conversations/find/${currentId}/${user._id}`);
+      const res = await axios.get(
+        `https://we-connect-api-r7xb.onrender.com/api/conversations/find/${currentId}/${user._id}`
+      );
       setCurrentChat(res.data);
     } catch (err) {
       console.error("Error fetching conversation:", err);
@@ -23,7 +25,7 @@ const ChatOnline = ({ onlineUsers, currentId, setCurrentChat }) => {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const res = await axios.get(`http://localhost:8080/api/users/friends/${currentId}`);
+        const res = await axios.get(`https://we-connect-api-r7xb.onrender.com/api/users/friends/${currentId}`);
         setFriends(res.data);
       } catch (err) {
         console.error("Error fetching friends:", err);

@@ -20,7 +20,7 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get(`http://localhost:8080/api/users?userId=${post.userId}`);
+      const response = await axios.get(`https://we-connect-api-r7xb.onrender.com/api/users?userId=${post.userId}`);
       console.log(response);
       setUser(response.data);
     };
@@ -29,7 +29,9 @@ const Post = ({ post }) => {
 
   const likeHandler = () => {
     try {
-      axios.put("http://localhost:8080/api/posts/" + post._id + "/like", { userId: currentUser._id });
+      axios.put("https://we-connect-api-r7xb.onrender.com/api/posts/" + post._id + "/like", {
+        userId: currentUser._id,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -60,8 +62,8 @@ const Post = ({ post }) => {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img className="likeIcon" src={PF + "like.png"} onCLick={likeHandler} alt="" />
-            <img className="likeIcon" src={PF + "heart.png"} onClick={likeHandler} alt="" />
+            <img className="likeIcon" src={PF + "/like.png"} onCLick={likeHandler} alt="" />
+            <img className="likeIcon" src={PF + "/heart.png"} onClick={likeHandler} alt="" />
             <span className="postLikeCounter">{like} people like this</span>
           </div>
           <div className="postBottomRight">
