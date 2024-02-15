@@ -46,6 +46,9 @@ app.use(
     },
   })
 );
+app.get("/", (req, res) => {
+  res.status(200).json("Server working");
+});
 app.use("/api/posts", postRoute);
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
@@ -62,3 +65,5 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.listen(8080, () => {
   console.log("Backend server is ready.");
 });
+
+module.exports = app;
