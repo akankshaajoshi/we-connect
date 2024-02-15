@@ -6,11 +6,11 @@ const morgan = require("morgan");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
-const userRoute = require("./routes/users");
-const authRoute = require("./routes/auth");
-const postRoute = require("./routes/posts");
-const conversationRoute = require("./routes/conversations");
-const messageRoute = require("./routes/messages");
+const userRoute = require("../routes/users");
+const authRoute = require("../routes/auth");
+const postRoute = require("../routes/posts");
+const conversationRoute = require("../routes/conversations");
+const messageRoute = require("../routes/messages");
 
 const app = express();
 
