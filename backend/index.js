@@ -46,6 +46,18 @@ app.use(
     },
   })
 );
+
+app.use(
+  "/style",
+  express.static(path.join(__dirname, "public/style.css"), {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+      "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
+    },
+  })
+);
+
 app.get("/", (req, res) => {
   res.status(200).json("Server working");
 });
