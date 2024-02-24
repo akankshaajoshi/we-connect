@@ -4,15 +4,15 @@ import Online from "../online/Online";
 import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Add from "@mui/icons-material/Add";
 import Remove from "@mui/icons-material/Remove";
 
 const Rightbar = ({ user }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const navigate = useNavigate();
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(currentUser.followings.includes(user?.id));
+  const [followed, setFollowed] = useState(currentUser.followings?.includes(user?.id));
 
   useEffect(() => {
     const getFriends = async () => {
@@ -25,6 +25,12 @@ const Rightbar = ({ user }) => {
     };
     getFriends();
   }, [user]);
+
+  const handleLogout = () => {
+    localStorage.setItem("user", null);
+    navigate("/");
+    window.location.reload();
+  };
 
   const handleClick = async () => {
     try {
@@ -69,6 +75,13 @@ const Rightbar = ({ user }) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     return (
       <>
+        <div className="w-full flex items-center justify-center">
+          {user.username === currentUser.username && (
+            <button className="logoutButton" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
+        </div>
         {user.username !== currentUser.username && (
           <button className="rightbarFollowButton" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}

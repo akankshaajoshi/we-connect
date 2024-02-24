@@ -107,6 +107,7 @@ const Messenger = () => {
               conversations.map((c, index) => {
                 return (
                   <div
+                    id={index}
                     onClick={() => {
                       setCurrentChat(c);
                     }}

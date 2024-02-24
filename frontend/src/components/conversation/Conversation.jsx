@@ -6,12 +6,11 @@ const Conversation = ({ conversation, currentUser }) => {
   const [user, setUser] = useState(null);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-  console.log(conversation);
   useEffect(() => {
     const getUser = async () => {
       try {
         const friendId = conversation.members.find((m) => m !== currentUser._id);
-        const res = await axios.get("/users?userId=" + friendId);
+        const res = await axios.get("https://we-connect-api-r7xb.onrender.com/api/users?userId=" + friendId);
         setUser(res.data);
       } catch (err) {
         console.log(err);
@@ -25,7 +24,11 @@ const Conversation = ({ conversation, currentUser }) => {
     <div className="conversation">
       {user && (
         <>
-          <img src={user.profilePicture ? user.profilePicture : PF + "person.jpg"} alt="" className="conversationImg" />
+          <img
+            src={user.profilePicture ? user.profilePicture : PF + "/person.jpg"}
+            alt=""
+            className="conversationImg"
+          />
           <span className="conversationName">{user?.username}</span>
         </>
       )}
